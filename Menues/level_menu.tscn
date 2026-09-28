@@ -1,0 +1,307 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3vbe32d41b2o"]
+
+[ext_resource type="Script" uid="uid://cq362sdgq7lba" path="res://Menues/level_menu.gd" id="1_8v1it"]
+[ext_resource type="PackedScene" uid="uid://b36fwb7lgbg7a" path="res://Levels/LevelsItems/level_button.tscn" id="2_kgvq6"]
+[ext_resource type="Texture2D" uid="uid://drxboe2dutwo2" path="res://assets/Button.png" id="3_voabt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1yl1"]
+atlas = ExtResource("3_voabt")
+region = Rect2(197, 2716, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nk52"]
+atlas = ExtResource("3_voabt")
+region = Rect2(606, 2716, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dsnk"]
+atlas = ExtResource("3_voabt")
+region = Rect2(401, 2716, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygk4t"]
+atlas = ExtResource("3_voabt")
+region = Rect2(810, 2716, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p71oq"]
+atlas = ExtResource("3_voabt")
+region = Rect2(197, 2498, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2pkj"]
+atlas = ExtResource("3_voabt")
+region = Rect2(606, 2498, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xmfv"]
+atlas = ExtResource("3_voabt")
+region = Rect2(401, 2498, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am5k3"]
+atlas = ExtResource("3_voabt")
+region = Rect2(810, 2498, 181, 189)
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8v1it")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.498039, 0.784314, 0.486275, 1)
+
+[node name="GameTypes" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.5
+offset_top = -103.5
+offset_right = 413.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 96
+columns = 3
+
+[node name="MATH" type="Button" parent="GameTypes"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "MATH"
+
+[node name="LOGIC" type="Button" parent="GameTypes"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "LOGIC"
+
+[node name="MEMORY" type="Button" parent="GameTypes"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "MEMORY"
+
+[node name="Challenges" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.5
+offset_top = -110.5
+offset_right = 327.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 96
+columns = 2
+
+[node name="Challenge_1" type="Button" parent="Challenges"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Challenge1"
+
+[node name="Challenge_2" type="Button" parent="Challenges"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Challenge2"
+
+[node name="DataBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 820.0
+offset_bottom = 526.0
+scale = Vector2(0.2, 0.2)
+
+[node name="GameTypeData" type="Label" parent="DataBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541176, 0, 1, 1)
+theme_override_font_sizes/font_size = 124
+text = "GameType:"
+
+[node name="ChallengesData" type="Label" parent="DataBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.0117647, 0.160784, 1)
+theme_override_font_sizes/font_size = 124
+text = "Challenge:"
+
+[node name="LevelMenu" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.5
+offset_top = -272.0
+offset_right = 331.5
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelSet" type="Label" parent="LevelMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.5
+offset_right = 333.5
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Easy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClipControl" type="Control" parent="LevelMenu"]
+clip_contents = true
+custom_minimum_size = Vector2(548, 292)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -146.0
+offset_right = 274.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelSets" type="HBoxContainer" parent="LevelMenu/ClipControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(548, 292)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -146.0
+offset_right = 873.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 128
+
+[node name="easy" type="GridContainer" parent="LevelMenu/ClipControl/LevelSets"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="1" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="2" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="3" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="4" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="5" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="6" parent="LevelMenu/ClipControl/LevelSets/easy" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="hard" type="GridContainer" parent="LevelMenu/ClipControl/LevelSets"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 64
+columns = 3
+
+[node name="1" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="2" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="3" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="4" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="5" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="6" parent="LevelMenu/ClipControl/LevelSets/hard" instance=ExtResource("2_kgvq6")]
+layout_mode = 2
+
+[node name="BackButton" type="TextureButton" parent="LevelMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -46.5
+offset_right = 40.5
+offset_bottom = 46.5
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_r1yl1")
+texture_pressed = SubResource("AtlasTexture_7nk52")
+texture_hover = SubResource("AtlasTexture_0dsnk")
+texture_disabled = SubResource("AtlasTexture_ygk4t")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="NextButton" type="TextureButton" parent="LevelMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -46.5
+offset_right = 38.5
+offset_bottom = 46.5
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_p71oq")
+texture_pressed = SubResource("AtlasTexture_p2pkj")
+texture_hover = SubResource("AtlasTexture_2xmfv")
+texture_disabled = SubResource("AtlasTexture_am5k3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MenuBackButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 896.0
+offset_top = 21.0
+offset_right = 1008.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="LevelMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LevelMenu/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="MenuBackButton" to="." method="_on_menu_back_button_pressed"]

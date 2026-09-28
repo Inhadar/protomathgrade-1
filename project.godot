@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ProtoMathGrade#1"
+run/main_scene="uid://brod60fr86jph"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://Singeltons/Globals.gd"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/window_width_override=512
+window/size/window_height_override=384
+window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://ActionMechanics/": "pink",
+"res://GUI/": "teal",
+"res://Levels/": "green",
+"res://Menues/": "blue",
+"res://Shaders/": "gray",
+"res://Singeltons/": "red",
+"res://Sounds/": "orange",
+"res://assets/": "yellow"
+}
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjkrf2ifn5hnn"]
+
+[ext_resource type="Script" uid="uid://0mrspd8tj86q" path="res://Levels/LevelController.gd" id="1_3sfc0"]
+[ext_resource type="PackedScene" uid="uid://dr0jumuyh0upf" path="res://GUI/GUI.tscn" id="2_ywdfp"]
+[ext_resource type="PackedScene" uid="uid://dmt0pfomfdnql" path="res://ActionMechanics/BlockCount.tscn" id="3_kq2c2"]
+
+[node name="1" type="Node"]
+script = ExtResource("1_3sfc0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.324734, 0.582288, 1)
+
+[node name="GUI" parent="." instance=ExtResource("2_ywdfp")]
+unique_name_in_owner = true
+
+[node name="Mechanic" type="Node2D" parent="."]
+
+[node name="BlockCount" parent="Mechanic" instance=ExtResource("3_kq2c2")]

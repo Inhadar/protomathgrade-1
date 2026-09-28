@@ -1,0 +1,349 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccw6k75v5oosp"]
+
+[ext_resource type="Script" uid="uid://12tsef44efh6" path="res://ActionMechanics/swipe_mechanics_itemmath.gd" id="1_0h5xr"]
+[ext_resource type="AudioStream" uid="uid://bcg8r23c10rnq" path="res://Sounds/win sound 1-2.wav" id="2_lc7if"]
+[ext_resource type="AudioStream" uid="uid://dvkbryvbdqg26" path="res://Sounds/error.wav" id="3_3gohy"]
+[ext_resource type="AudioStream" uid="uid://dib2d001xby0m" path="res://Sounds/wood02.wav" id="4_tt6wq"]
+
+[sub_resource type="Animation" id="Animation_giqyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sounds/win:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xxjsj"]
+resource_name = "false"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sounds/lose:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Sounds/answerplacesfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_slvyi"]
+resource_name = "true"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0.294118, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sounds/win:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Sounds/answerplacesfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aprfl"]
+_data = {
+&"RESET": SubResource("Animation_giqyv"),
+&"false": SubResource("Animation_xxjsj"),
+&"true": SubResource("Animation_slvyi")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_0h5xr"]
+
+[node name="SwipeMechanicsItem" type="Node2D"]
+script = ExtResource("1_0h5xr")
+
+[node name="QuestionBox" type="Node2D" parent="."]
+position = Vector2(158, 156)
+
+[node name="FirstItems" type="GridContainer" parent="QuestionBox"]
+offset_left = -94.0
+offset_top = -3.0
+offset_right = 98.0
+offset_bottom = 189.0
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="SecondItems" type="GridContainer" parent="QuestionBox"]
+offset_left = 299.0
+offset_top = -3.0
+offset_right = 491.0
+offset_bottom = 189.0
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="Bar" type="ColorRect" parent="QuestionBox"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(144, 144)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 652.0
+offset_top = -47.0
+offset_right = 796.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QuestionBox/Bar"]
+libraries = {
+&"": SubResource("AnimationLibrary_aprfl")
+}
+
+[node name="answer" type="ColorRect" parent="QuestionBox"]
+custom_minimum_size = Vector2(128, 128)
+offset_left = 660.0
+offset_top = -39.0
+offset_right = 724.0
+offset_bottom = 25.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="QuestionBox/answer"]
+layout_mode = 0
+offset_right = 138.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 96
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnswerAreaPos" type="Marker2D" parent="QuestionBox/answer"]
+unique_name_in_owner = true
+position = Vector2(64, 64)
+
+[node name="process" type="Label" parent="QuestionBox"]
+offset_left = 140.0
+offset_top = -39.0
+offset_right = 264.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 96
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="equal" type="Label" parent="QuestionBox"]
+offset_left = 528.0
+offset_top = -39.0
+offset_right = 652.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 96
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnswerBox" type="Node2D" parent="."]
+position = Vector2(253, 574)
+metadata/_edit_group_ = true
+
+[node name="0" type="Node2D" parent="AnswerBox"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnswerBox/0"]
+modulate = Color(0, 0.286275, 0.462745, 1)
+scale = Vector2(98, 98)
+mesh = SubResource("QuadMesh_0h5xr")
+
+[node name="Label" type="Label" parent="AnswerBox/0"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 441.0
+offset_bottom = 441.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 256
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="AnswerBox/0"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="1" type="Node2D" parent="AnswerBox"]
+position = Vector2(162, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnswerBox/1"]
+modulate = Color(0, 0.286275, 0.462745, 1)
+scale = Vector2(98, 98)
+mesh = SubResource("QuadMesh_0h5xr")
+
+[node name="Label" type="Label" parent="AnswerBox/1"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 441.0
+offset_bottom = 441.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 256
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="AnswerBox/1"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="2" type="Node2D" parent="AnswerBox"]
+position = Vector2(324, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnswerBox/2"]
+modulate = Color(0, 0.286275, 0.462745, 1)
+scale = Vector2(98, 98)
+mesh = SubResource("QuadMesh_0h5xr")
+
+[node name="Label" type="Label" parent="AnswerBox/2"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 441.0
+offset_bottom = 441.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 256
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="AnswerBox/2"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="3" type="Node2D" parent="AnswerBox"]
+position = Vector2(486, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnswerBox/3"]
+modulate = Color(0, 0.286275, 0.462745, 1)
+scale = Vector2(98, 98)
+mesh = SubResource("QuadMesh_0h5xr")
+
+[node name="Label" type="Label" parent="AnswerBox/3"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 441.0
+offset_bottom = 441.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 256
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="AnswerBox/3"]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="win" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("2_lc7if")
+bus = &"Sfx"
+
+[node name="lose" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("3_3gohy")
+bus = &"Sfx"
+
+[node name="theme" type="AudioStreamPlayer2D" parent="Sounds"]
+bus = &"Music"
+
+[node name="answerplacesfx" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_tt6wq")
+volume_db = 15.0
+bus = &"Sfx"
+
+[connection signal="animation_finished" from="QuestionBox/Bar/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
